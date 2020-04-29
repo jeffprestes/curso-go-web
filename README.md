@@ -6,4 +6,4 @@ Este aplicação serve de material para o Curso de Go Web - MVC. Este curso ensi
 
 ## Preparação antes do curso
 
-Usamos um banco de dados MySQL ou MariaDB nesse exemplo. Por favor crie um banco chamado curso_go_web e um usuário chamado sysapp com a senha 'senhaSimples1234' . Depois execute os scripts SQL que estão nos diretórios dados-tabela e lib/auth/
+Usamos um banco de dados MySQL ou MariaDB nesse exemplo. Por favor crie um banco chamado curso_go_web e um usuário chamado sysapp com a senha 'senhaSimples1234' . Depois execute os scripts SQL que estão nos diretórios _/dados-tabela_ e _/lib/auth_
