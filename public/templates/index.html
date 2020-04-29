@@ -13,33 +13,33 @@
   <div class="container">
     <h1>Gestão de Clientes</h1>
     <section class="section" id="form">
-      <form action="/adicionacliente" method="POST" class="col s12">
+      <form action="/adicionacliente" method="POST" class="col s12" name="frmCliente" id="frmCliente">
         <div class="row">
           <div class="input-field col s12">
-            <input type="number" name="id" id="id" class="validate">
-            <label for="id">ID</label>
+            <input type="number" name="formID" id="formID" class="validate">
+            <label for="formID">ID</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input type="text" name="nome" id="nome" class="validate">
-            <label for="nome">Nome</label>
+            <input type="text" name="formNome" id="formNome" class="validate">
+            <label for="formNome">Nome</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input type="text" name="cidade" id="cidade" class="validate">
-            <label for="cidade">Cidade</label>
+            <input type="text" name="formCidade" id="formCidade" class="validate">
+            <label for="formCidade">Cidade</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <input type="text" maxlength="2" size="4" name="uf" id="uf" class="validate">
-            <label for="uf">UF</label>
+            <input type="text" maxlength="2" size="4" name="formUF" id="formUF" class="validate">
+            <label for="formUF">UF</label>
           </div>
           <div class="input-field col s6">
-            <input type="number" maxlength="8" size="10" name="cep" id="cep" class="validate">
-            <label for="cep">CEP</label>
+            <input type="number" maxlength="8" size="10" name="formCEP" id="formCEP" class="validate">
+            <label for="formCEP">CEP</label>
           </div>
         </div>
         <div class="row">
@@ -70,11 +70,11 @@
         </thead>
         <tbody>
           {{ range .clientes}}
-          <tr data-cliID="{{.ID}}">
-            <td>{{.Nome}}</td>
-            <td>{{.Cidade}}</td>
-            <td>{{.UF}}</td>
-            <td>{{.CEP}}</td>
+          <tr onclick="carregaDadosNoForm({{.ID}})" id="registro_{{.ID}}">
+            <td data-fieldname="nome">{{.Nome}}</td>
+            <td data-fieldname="cidade">{{.Cidade}}</td>
+            <td data-fieldname="uf">{{.UF}}</td>
+            <td data-fieldname="cep">{{.CEP}}</td>
           </tr>
           {{ end }}
         </tbody>
@@ -84,6 +84,29 @@
   <script src="https://code.jquery.com/jquery-3.5.0.min.js"
     integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    function carregaDadosNoForm(id) {
+      const celulas = $('#registro_' + id).find('td')
+      $.each(celulas, (index, celula) => {
+        if (celula.dataset.fieldname === 'nome') {
+          $('#formNome').val(celula.innerHTML)
+        } else if (celula.dataset.fieldname === 'cidade') {
+          $('#formCidade').val(celula.innerHTML)
+        } else if (celula.dataset.fieldname === 'cep') {
+          $('#formCEP').val(celula.innerHTML)
+        } else if (celula.dataset.fieldname === 'uf') {
+          $('#formUF').val(celula.innerHTML)
+        }
+        $('#formID').val(id);
+        $('#formNome').focus();
+        $('#formCidade').focus();
+        $('#formCEP').focus();
+        $('#formUF').focus();
+        $('#formID').focus();
+        console.log(celula.innerHTML, celula.dataset.fieldname);
+      })
+    }
+  </script>
 </body>
 
 </html>
