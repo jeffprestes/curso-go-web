@@ -1,6 +1,7 @@
 package app
 
 import (
+	"github.com/go-macaron/binding"
 	mcache "github.com/go-macaron/cache"
 	"github.com/go-macaron/gzip"
 	"github.com/go-macaron/i18n"
@@ -13,6 +14,7 @@ import (
 	"github.com/jeffprestes/curso-go-web/lib/contx"
 	"github.com/jeffprestes/curso-go-web/lib/cors"
 	"github.com/jeffprestes/curso-go-web/lib/template"
+	"github.com/jeffprestes/curso-go-web/model"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"gopkg.in/macaron.v1"
 )
@@ -63,6 +65,8 @@ func SetupMiddlewares(app *macaron.Macaron) {
 //SetupRoutes defines the routes the Web Application will respond
 func SetupRoutes(app *macaron.Macaron) {
 	app.Get("", handler.IndexCliente)
+	app.Get("/", handler.IndexCliente)
+	app.Post("/alteracliente", binding.Bind(model.Cliente{}), handler.AlteraCliente)
 
 	//HealthChecker
 	app.Get("/health", handler.HealthCheck)
