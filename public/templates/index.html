@@ -5,16 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Xiboquinha - Gestão de Clientes</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   <div class="container">
     <h1>Gestão de Clientes</h1>
     <section class="section" id="form">
-
-    </section>
-    <div class="divider"></div>
+        <form action="/adicionacliente" method="POST" class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input type="number" name="id" id="id" class="validate">
+              <label for="id">ID</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input type="text" name="nome" id="nome" class="validate">
+              <label for="nome">Nome</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input type="text" name="cidade" id="cidade" class="validate">
+              <label for="cidade">Cidade</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input type="text" maxlength="2" size="4" name="uf" id="uf" class="validate">
+              <label for="uf">UF</label>
+            </div>
+            <div class="input-field col s6">
+              <input type="number" maxlength="8" size="10" name="cep" id="cep" class="validate">
+              <label for="cep">CEP</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s6 center-align">
+              <button class="btn waves-effect waves-light" type="submit" name="action">Salvar
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+            <div class="center-align col s6">
+              <button class="btn waves-effect waves-light blue darken-4" type="reset" name="reset">Limpar Formulário
+                <i class="material-icons right">clear</i>
+              </button>
+            </div>
+          </div>
+        </form>
+    </section>   
+    <div class="divider"></div> 
     <section class="section" id="listagem">
-
+      <h5>Clientes já registrados</h5>
+      <table class="highlight responsive-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Cidade</th>
+            <th>UF</th>
+            <th>CEP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jeff Prestes</td>
+            <td>São Paulo</td>
+            <td>SP</td>
+            <td>01152010</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
   </div>
   <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>

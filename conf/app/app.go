@@ -11,10 +11,10 @@ import (
 	"github.com/jeffprestes/curso-go-web/handler"
 	"github.com/jeffprestes/curso-go-web/lib/cache"
 	"github.com/jeffprestes/curso-go-web/lib/contx"
-	"github.com/jeffprestes/curso-go-web/lib/template"
 	"github.com/jeffprestes/curso-go-web/lib/cors"
-	"gopkg.in/macaron.v1"
+	"github.com/jeffprestes/curso-go-web/lib/template"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"gopkg.in/macaron.v1"
 )
 
 //SetupMiddlewares configures the middlewares using in each web request
@@ -38,22 +38,22 @@ func SetupMiddlewares(app *macaron.Macaron) {
 		Funcs:     template.FuncMaps(),
 	}))
 	app.Use(macaron.Renderer(macaron.RenderOptions{
-    	Directory: "public/templates",
-    	Funcs:     template.FuncMaps(),
-    }))
+		Directory: "public/templates",
+		Funcs:     template.FuncMaps(),
+	}))
 	//Cache in memory
 	app.Use(mcache.Cacher(
 		cache.Option(conf.Cfg.Section("").Key("cache_adapter").Value()),
 	))
 	/*
-	Redis Cache
-	Add this lib to import session: _ "github.com/go-macaron/cache/redis"
-	Later replaces the cache in memory instructions for the lines below
-	optCache := mcache.Options{
-			Adapter:       conf.Cfg.Section("").Key("cache_adapter").Value(),
-			AdapterConfig: conf.Cfg.Section("").Key("cache_adapter_config").Value(),
-		}
-	app.Use(mcache.Cacher(optCache))
+		Redis Cache
+		Add this lib to import session: _ "github.com/go-macaron/cache/redis"
+		Later replaces the cache in memory instructions for the lines below
+		optCache := mcache.Options{
+				Adapter:       conf.Cfg.Section("").Key("cache_adapter").Value(),
+				AdapterConfig: conf.Cfg.Section("").Key("cache_adapter_config").Value(),
+			}
+		app.Use(mcache.Cacher(optCache))
 	*/
 	app.Use(session.Sessioner())
 	app.Use(contx.Contexter())
@@ -62,9 +62,7 @@ func SetupMiddlewares(app *macaron.Macaron) {
 
 //SetupRoutes defines the routes the Web Application will respond
 func SetupRoutes(app *macaron.Macaron) {
-	app.Get("", func() string {
-		return "Mercurius Works!"
-	})
+	app.Get("", handler.IndexCliente)
 
 	//HealthChecker
 	app.Get("/health", handler.HealthCheck)
@@ -73,29 +71,29 @@ func SetupRoutes(app *macaron.Macaron) {
 	app.Get("/metrics", promhttp.Handler())
 
 	/*
-	
-	//Basic OAuth2 endpoint templates
-	app.Group("/oauth2", func() {
-		app.Get("/token", auth.GetAccessToken)
-		app.Get("/credentials/:idclient", auth.GetOauthUserCredentials)
-		app.Post("/initializecredentials", auth.InitializeUserCredentials)
-	})
+
+		//Basic OAuth2 endpoint templates
+		app.Group("/oauth2", func() {
+			app.Get("/token", auth.GetAccessToken)
+			app.Get("/credentials/:idclient", auth.GetOauthUserCredentials)
+			app.Post("/initializecredentials", auth.InitializeUserCredentials)
+		})
 
 	*/
 
 	/*
 
-	//Example how to bind request params into a struct and inject into Handler and endpoints protected 
-	//with OAuth2 authentication
-	app.Group("/api", func() {
-		app.Group("/v1", func() {
-			app.Post("/test/send", binding.Bind(model.SendRequestForm{}), handler.SendHandler)
-			app.Post("/wallet", binding.Bind(model.WalletRequestJSON{}}), handler.CreateWalletHandler)
-		})
-	}, auth.LoginRequiredAPISystem)
+		//Example how to bind request params into a struct and inject into Handler and endpoints protected
+		//with OAuth2 authentication
+		app.Group("/api", func() {
+			app.Group("/v1", func() {
+				app.Post("/test/send", binding.Bind(model.SendRequestForm{}), handler.SendHandler)
+				app.Post("/wallet", binding.Bind(model.WalletRequestJSON{}}), handler.CreateWalletHandler)
+			})
+		}, auth.LoginRequiredAPISystem)
 
 	*/
-	
+
 	/*
 		//An example to test DB connection
 		app.Get("", func() string {
