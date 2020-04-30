@@ -12,6 +12,9 @@
 <body>
   <div class="container">
     <h1>Gestão de Clientes</h1>
+    <h4>Bem vinda(o) de volta {{.user.Name}} -
+      <a href="/logout"><i class="material-icons">exit_to_app</i> SAIR DA APLICAÇÃO </a>
+    </h4>
     <section class="section" id="form">
       <form action="/alteracliente" method="POST" class="col s12" name="frmCliente" id="frmCliente">
         <div class="row">

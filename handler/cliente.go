@@ -19,7 +19,7 @@ func IndexCliente(ctx *contx.Context) {
 		return
 	}
 	ctx.Data["clientes"] = clientes
-	ctx.NativeHTML(http.StatusOK, "index")
+	ctx.NativeHTML(http.StatusOK, "clientes")
 }
 
 //AlteraCliente altera dados do cliente ou insere caso o ID não se encontrado na base de dados

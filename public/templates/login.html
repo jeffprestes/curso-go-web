@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xiboquinha - Gestão de Clientes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Gestão de Clientes</h1>
+    <h4>Login</h4>
+    <section class="section" id="form">
+      <form action="/checklogin" method="POST" class="col s12" name="frmLogin" id="frmLogin">
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="text" name="formEmail" id="formEmail" class="validate">
+            <label for="formEmail">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="password" name="formSenha" id="formSenha" class="validate">
+            <label for="formSenha">Senha</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6 center-align">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Login
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+          <div class="center-align col s6">
+            <button class="btn waves-effect waves-light blue darken-4" type="reset" name="reset">Limpar Formulário
+              <i class="material-icons right">clear</i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+    integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
