@@ -6,4 +6,14 @@ Este aplicação serve de material para o Curso de Go Web - MVC. Este curso ensi
 
 ## Preparação antes do curso
 
-Usamos um banco de dados MySQL ou MariaDB nesse exemplo. Por favor crie um banco chamado curso_go_web e um usuário chamado sysapp com a senha 'senhaSimples1234' . Depois execute os scripts SQL que estão nos diretórios _/dados-tabela_ e _/lib/auth_
+Usamos um banco de dados MySQL ou MariaDB nesse exemplo. Por favor crie um banco chamado curso*go_web e um usuário chamado sysapp com a senha 'senhaSimples1234' . Depois execute os scripts SQL que estão nos diretórios */lib/auth* e depois em */dados-tabela\_
+
+## Para executar a aplicação
+
+Basta executar `go run main.go` do diretório raiz da aplicação
+
+## Para acessar a aplicação
+
+Acesse em seu navegador http://localhost:8080
+
+Caso queira mudar a porta acesse o arquivo _conf/app.ini_ e mude a variável **http_port** ou ainda defina através da criação da variável de ambiente **PORT** com o valor desejado para a porta.
