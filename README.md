@@ -12,6 +12,10 @@ Usamos um banco de dados MySQL ou MariaDB nesse exemplo. Por favor crie um banco
 
 Basta executar `go run main.go` do diretório raiz da aplicação
 
+## Para compilar a aplicação
+
+`go build` para ele compilar no diretório local e para sua arquitetura de desenvolvimento. Para um server Linux, por exemplo, você deve executar `GOARCH=amd64 GOOS=linux go build -o curso-go-web-linux-binary`
+
 ## Para acessar a aplicação
 
 Acesse em seu navegador http://localhost:8080
