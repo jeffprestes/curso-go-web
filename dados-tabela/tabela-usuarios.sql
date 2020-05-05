@@ -1,3 +1,4 @@
+-- a senha do usuário descriptografada é Hague@1899
 insert into logcli_loginclient (
     logcli_clientname,
     logcli_clientid,
