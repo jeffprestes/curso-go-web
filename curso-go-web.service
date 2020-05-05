@@ -1,0 +1,17 @@
+[Unit]
+Description=Aplicativo Web feito em Go para o Curso Go Web
+Documentation=https://raw.githubusercontent.com/jeffprestes/curso-go-web/master/README.md
+Wants=network.target
+After=network.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+RuntimeDirectory=/srv/curso-go-web
+WorkingDirectory=/srv/curso-go-web
+ExecStart=/srv/curso-go-web/curso-go-web-linux-binary
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

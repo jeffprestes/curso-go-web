@@ -12,6 +12,8 @@ Usamos um banco de dados MySQL ou MariaDB nesse exemplo. Por favor crie um banco
 
 Basta executar `go run main.go` do diretório raiz da aplicação
 
+Se estiver num servidor Linux e quiser iniciar a aplicação como um serviço, clone este projeto dentro do diretório `/srv`, depois copie o arquivo curso-go-web.service para `/etc/systemd/system/`, daí execute os seguintes comandos: `sudo systemctl daemon-reload && sudo systemctl start curso-go-web && sudo systemctl status curso-go-web && sudo systemctl enable curso-go-web` . Se tudo estiver OK com as permissões a aplicação deverá subir na porta 8080 e ser recarregada quando o servidor for reiniciado. Se quiser rodar na porta 80 edite o arquivo `conf/app.ini`
+
 ## Para compilar a aplicação
 
 `go build` para ele compilar no diretório local e para sua arquitetura de desenvolvimento. Para um server Linux, por exemplo, você deve executar `GOARCH=amd64 GOOS=linux go build -o curso-go-web-linux-binary`
