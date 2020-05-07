@@ -10,7 +10,7 @@ Usamos um banco de dados MySQL ou MariaDB nesse exemplo. Por favor crie um banco
 
 ## Para executar a aplicação
 
-Basta executar `go run main.go` do diretório raiz da aplicação
+Basta executar `go run main.go` do diretório raiz da aplicação. Caso Go reclame da ausencia de alguma dependencia execute `go install` para que _go modules_ baixem as dependencias ou execute `go get ./...` para que Go baixe todas as dependencias em seu GOPATH.
 
 Se estiver num servidor Linux e quiser iniciar a aplicação como um serviço, clone este projeto dentro do diretório `/srv`, depois copie o arquivo curso-go-web.service para `/etc/systemd/system/`, daí execute os seguintes comandos: `sudo systemctl daemon-reload && sudo systemctl start curso-go-web && sudo systemctl status curso-go-web && sudo systemctl enable curso-go-web` . Se tudo estiver OK com as permissões a aplicação deverá subir na porta 8080 e ser recarregada quando o servidor for reiniciado. Se quiser rodar na porta 80 edite o arquivo `conf/app.ini`
 
