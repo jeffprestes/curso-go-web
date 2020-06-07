@@ -1,4 +1,4 @@
-CREATE TABLE curso_go_web.clientes (
+CREATE TABLE clientes (
   cli_id INT NOT NULL AUTO_INCREMENT,
   cli_nome VARCHAR(255) NULL,
   cli_cidade VARCHAR(255) NULL,
